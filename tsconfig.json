@@ -15,7 +15,9 @@
     "incremental": true,
     "paths": {
       "@/*": ["./src/*"]
-    }
+    },
+    "forceConsistentCasingInFileNames": true,
+    "typeRoots": ["./node_modules/@types", "./typings"]
   },
   "include": ["next-env.d.ts", "**/*.ts", "**/*.tsx"],
   "exclude": ["node_modules"]
