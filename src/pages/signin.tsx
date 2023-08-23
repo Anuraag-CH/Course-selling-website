@@ -57,7 +57,7 @@ function Signin() {
             variant="contained"
             onClick={async () => {
               const res = await axios.post(
-                `${BASE_URL}/admin/login`,
+                `${BASE_URL}/api/admin/login`,
                 {
                   username: email,
                   password: password,
@@ -68,10 +68,7 @@ function Signin() {
                   },
                 }
               );
-              const data = res.data;
 
-              localStorage.setItem("token", data.token);
-              // window.location = "/"
               setUser({
                 userEmail: email,
                 isLoading: false,

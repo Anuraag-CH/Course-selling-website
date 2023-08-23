@@ -1,14 +1,31 @@
+import React, { useState } from "react";
 import TextField from "@mui/material/TextField";
 import Button from "@mui/material/Button";
 import { Card } from "@mui/material";
-import { useState } from "react";
 import axios from "axios";
 import { BASE_URL } from "../config";
+
 function AddCourse() {
-  const [title, setTitle] = useState("");
-  const [description, setDescription] = useState("");
-  const [image, setImage] = useState("");
-  const [price, setPrice] = useState(0);
+  const [title, setTitle] = useState<string>("");
+  const [description, setDescription] = useState<string>("");
+  const [image, setImage] = useState<string>("");
+  const [price, setPrice] = useState<number>(0);
+
+  const handleAddCourse = async () => {
+    try {
+      await axios.post(`${BASE_URL}/api/admin/courses`, {
+        title: title,
+        description: description,
+        imageLink: image,
+        published: true,
+        price: price,
+      });
+      alert("Added course!");
+    } catch (error) {
+      console.error("Error:", error);
+      alert("An error occurred while adding the course.");
+    }
+  };
 
   return (
     <div
@@ -21,14 +38,12 @@ function AddCourse() {
     >
       <div style={{ display: "flex", justifyContent: "center" }}>
         <Card
-          varint={"outlined"}
+          variant="outlined"
           style={{ width: 400, padding: 20, marginTop: 30, height: "100%" }}
         >
           <TextField
             style={{ marginBottom: 10 }}
-            onChange={(e) => {
-              setTitle(e.target.value);
-            }}
+            onChange={(e) => setTitle(e.target.value)}
             fullWidth={true}
             label="Title"
             variant="outlined"
@@ -36,9 +51,7 @@ function AddCourse() {
 
           <TextField
             style={{ marginBottom: 10 }}
-            onChange={(e) => {
-              setDescription(e.target.value);
-            }}
+            onChange={(e) => setDescription(e.target.value)}
             fullWidth={true}
             label="Description"
             variant="outlined"
@@ -46,9 +59,7 @@ function AddCourse() {
 
           <TextField
             style={{ marginBottom: 10 }}
-            onChange={(e) => {
-              setImage(e.target.value);
-            }}
+            onChange={(e) => setImage(e.target.value)}
             fullWidth={true}
             label="Image link"
             variant="outlined"
@@ -56,37 +67,13 @@ function AddCourse() {
 
           <TextField
             style={{ marginBottom: 10 }}
-            onChange={(e) => {
-              setPrice(e.target.value);
-            }}
+            onChange={(e) => setPrice(Number(e.target.value))}
             fullWidth={true}
             label="Price"
             variant="outlined"
           />
 
-          <Button
-            size={"large"}
-            variant="contained"
-            onClick={async () => {
-              await axios.post(
-                `${BASE_URL}/admin/courses`,
-                {
-                  title: title,
-                  description: description,
-                  imageLink: image,
-                  published: true,
-                  price,
-                },
-                {
-                  headers: {
-                    Authorization: "Bearer " + localStorage.getItem("token"),
-                  },
-                }
-              );
-              alert("Added course!");
-            }}
-          >
-            {" "}
+          <Button size="large" variant="contained" onClick={handleAddCourse}>
             Add course
           </Button>
         </Card>
