@@ -97,7 +97,7 @@ function UpdateCard() {
 
   return (
     <div style={{ display: "flex", justifyContent: "center" }}>
-      <Card varint={"outlined"} style={{ maxWidth: 600, marginTop: 200 }}>
+      <Card variant={"outlined"} style={{ maxWidth: 600, marginTop: 200 }}>
         <div style={{ padding: 20 }}>
           <Typography style={{ marginBottom: 10 }}>
             Update course details
