@@ -9,7 +9,7 @@ function Courses() {
   const [courses, setCourses] = useState([]);
 
   const init = async () => {
-    const response = await axios.get(`${BASE_URL}/api/admin/courses/`);
+    const response = await axios.get(`/api/admin/courses/`);
     setCourses(response.data.courses);
   };
 
