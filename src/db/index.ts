@@ -1,6 +1,7 @@
 import mongoose from "mongoose";
 
-mongoose.connect("mongodb://127.0.0.1:27017/courses");
+import { MONGO_URL } from "@/config";
+mongoose.connect(MONGO_URL);
 
 // Define mongoose schemas
 const userSchema = new mongoose.Schema({

@@ -2,8 +2,7 @@ import jwt from "jsonwebtoken";
 import { NextApiRequest, NextApiResponse } from "next";
 import bcrypt from "bcryptjs";
 import { Admin } from "@/db";
-
-const SECRET = "your-secret-key"; // Replace with your actual secret key
+import { SECRET } from "@/config";
 
 export default async function handler(
   req: NextApiRequest,

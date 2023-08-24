@@ -1,6 +1,6 @@
 import { NextApiRequest, NextApiResponse } from "next";
 import jwt from "jsonwebtoken";
-const SECRET = "your-secret-key"; // Replace with your actual secret key
+import { SECRET } from "./config";
 
 export default async function checkAuth(
   req: NextApiRequest,

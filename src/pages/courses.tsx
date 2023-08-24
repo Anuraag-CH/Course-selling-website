@@ -3,13 +3,13 @@ import { useEffect, useState } from "react";
 import axios from "axios";
 import { useRouter } from "next/router";
 import { Course } from "@/store/atoms/course";
-import { NEXT_URL } from "@/config";
+import { BASE_URL } from "@/config";
 
 function Courses() {
   const [courses, setCourses] = useState([]);
 
   const init = async () => {
-    const response = await axios.get(`${NEXT_URL}/api/admin/courses/`);
+    const response = await axios.get(`${BASE_URL}/api/admin/courses/`);
     setCourses(response.data.courses);
   };
 
