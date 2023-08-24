@@ -3,9 +3,6 @@ import { NextApiRequest, NextApiResponse } from "next";
 import bcrypt from "bcryptjs";
 import { Admin } from "@/db";
 import { SECRET } from "@/config";
-import connectDB from "@/db";
-
-connectDB();
 
 export default async function handler(
   req: NextApiRequest,
