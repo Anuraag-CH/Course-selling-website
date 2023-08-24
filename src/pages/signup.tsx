@@ -1,4 +1,3 @@
-import { BASE_URL } from "@/config";
 import { userState } from "@/store/atoms/user";
 import { Button, Card, TextField, Typography } from "@mui/material";
 import axios from "axios";
@@ -55,13 +54,10 @@ const Login = () => {
             size={"large"}
             variant="contained"
             onClick={async () => {
-              const response = await axios.post(
-                `${BASE_URL}/api/admin/signup`,
-                {
-                  username: email,
-                  password: password,
-                }
-              );
+              const response = await axios.post(`/api/admin/signup`, {
+                username: email,
+                password: password,
+              });
 
               // window.location = "/"
               setUser({ userEmail: email, isLoading: false });

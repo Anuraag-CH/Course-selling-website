@@ -3,7 +3,6 @@ import { useEffect, useState } from "react";
 import axios from "axios";
 import { useRouter } from "next/router.js";
 import { Course } from "@/store/atoms/course.js";
-import { BASE_URL } from "@/config";
 
 function Courses({ courses }: { courses: Course[] }) {
   return (
@@ -55,7 +54,7 @@ export default Courses;
 
 export async function getServerSideProps() {
   console.log("hit here");
-  const response = await axios.get(`${BASE_URL}/api/admin/courses/`, {
+  const response = await axios.get(`/api/admin/courses/`, {
     headers: {
       // Authorization: `Bearer ${localStorage.getItem('token')}`
     },

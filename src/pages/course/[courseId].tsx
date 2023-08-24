@@ -4,7 +4,6 @@ import { useRouter } from "next/router";
 import { Typography, TextField, Button } from "@mui/material";
 import axios from "axios";
 // import { Loading } from "./Loading";
-import { BASE_URL } from "@/config";
 import { courseState } from "../../store/atoms/course";
 import { useRecoilState, useRecoilValue, useSetRecoilState } from "recoil";
 import {
@@ -22,7 +21,7 @@ function Course() {
 
   useEffect(() => {
     axios
-      .get(`${BASE_URL}/api/admin/course/${courseId}`)
+      .get(`/api/admin/course/${courseId}`)
       .then((res) => {
         setCourse({ isLoading: false, course: res.data.course });
       })
@@ -148,16 +147,13 @@ function UpdateCard() {
           <Button
             variant="contained"
             onClick={async () => {
-              axios.put(
-                `${BASE_URL}/api/admin/course/` + courseDetails.course?._id,
-                {
-                  title: title,
-                  description: description,
-                  imageLink: image,
-                  published: true,
-                  price,
-                }
-              );
+              axios.put(`/api/admin/course/` + courseDetails.course?._id, {
+                title: title,
+                description: description,
+                imageLink: image,
+                published: true,
+                price,
+              });
               let updatedCourse = {
                 _id: courseDetails.course?._id,
                 title: title,

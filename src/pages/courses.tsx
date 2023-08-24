@@ -3,7 +3,6 @@ import { useEffect, useState } from "react";
 import axios from "axios";
 import { useRouter } from "next/router";
 import { Course } from "@/store/atoms/course";
-import { BASE_URL } from "@/config";
 
 function Courses() {
   const [courses, setCourses] = useState([]);

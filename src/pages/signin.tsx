@@ -1,8 +1,6 @@
-import { BASE_URL } from "@/config";
 import { userState } from "@/store/atoms/user";
 import { Button, Card, TextField, Typography } from "@mui/material";
 import axios from "axios";
-import Link from "next/link";
 import { useRouter } from "next/router";
 import React, { useState } from "react";
 import { useSetRecoilState } from "recoil";
@@ -57,7 +55,7 @@ function Signin() {
             variant="contained"
             onClick={async () => {
               const res = await axios.post(
-                `${BASE_URL}/api/admin/login`,
+                `/api/admin/login`,
                 {
                   username: email,
                   password: password,
