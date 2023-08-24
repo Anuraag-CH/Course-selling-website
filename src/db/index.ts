@@ -1,9 +1,20 @@
 import mongoose from "mongoose";
 
 import { MONGO_URL } from "@/config";
-mongoose.connect(MONGO_URL, {
-  dbName: "courses",
-});
+
+async function connectDB() {
+  try {
+    const connection = await mongoose.connect(MONGO_URL, {
+      dbName: "courses",
+    });
+
+    console.log("Connected to MongoDB");
+  } catch (error) {
+    console.error("Error connecting to MongoDB:", error);
+  }
+}
+
+export default connectDB;
 
 // Define mongoose schemas
 const userSchema = new mongoose.Schema({
