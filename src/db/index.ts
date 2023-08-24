@@ -14,7 +14,7 @@ async function connectDB() {
   }
 }
 
-connectDB();
+export default connectDB;
 
 // Define mongoose schemas
 const userSchema = new mongoose.Schema({
